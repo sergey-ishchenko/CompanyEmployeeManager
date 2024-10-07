@@ -1,0 +1,62 @@
+[
+  {
+    "Name": "Engineering / Development",
+    "Floor": 3
+  },
+  {
+    "Name": "Quality Assurance",
+    "Floor": 3
+  },
+  {
+    "Name": "Product Management",
+    "Floor": 3
+  },
+  {
+    "Name": "Project Management",
+    "Floor": 3
+  },
+  {
+    "Name": "Design / UX/UI",
+    "Floor": 3
+  },
+  {
+    "Name": "Data Science / Data Engineering",
+    "Floor": 4
+  },
+  {
+    "Name": "DevOps / IT Operations",
+    "Floor": 4
+  },
+  {
+    "Name": "Technical Support / Customer Support",
+    "Floor": 2
+  },
+  {
+    "Name": "Human Resources (HR)",
+    "Floor": 2
+  },
+  {
+    "Name": "Finance",
+    "Floor": 2
+  },
+  {
+    "Name": "Marketing",
+    "Floor": 5
+  },
+  {
+    "Name": "Sales",
+    "Floor": 1
+  },
+  {
+    "Name": "Legal",
+    "Floor": 1
+  },
+  {
+    "Name": "Information Security / Cybersecurity",
+    "Floor": 5
+  },
+  {
+    "Name": "Business Intelligence (BI) / Analytics",
+    "Floor": 1
+  }
+]

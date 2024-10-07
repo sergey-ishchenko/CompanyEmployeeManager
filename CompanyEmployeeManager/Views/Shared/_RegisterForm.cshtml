@@ -1,0 +1,29 @@
+﻿@model CompanyEmployeeManager.Models.Auth.RegisterModel
+
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+	<div class="form-group mb-3">
+		@Html.LabelFor(m => m.Username)
+		@Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+	</div>
+
+	<div class="form-group mb-3">
+		@Html.LabelFor(m => m.Password)
+		@Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+	</div>
+
+	<div class="form-group mb-3">
+		@Html.LabelFor(m => m.ConfirmPassword)
+		@Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+	</div>
+
+	<div class="form-group mb-3">
+		<div class="text-danger">@Html.ValidationSummary()</div>
+	</div>
+
+	<div class="form-group mb-3">
+		<a href="/" class="btn btn-secondary">Cancel</a>
+		<button type="submit" class="btn btn-primary">Register</button>
+	</div>
+}

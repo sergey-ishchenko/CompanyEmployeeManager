@@ -1,0 +1,83 @@
+@using CompanyEmployeeManager.Enums
+@model CreateEditEmployeeModel
+@{
+	ViewData["Title"] = "Adding employee";
+}
+
+<script type="text/javascript">	
+	$(document).ready(function () {	
+		$("#Employee_Name").autocomplete({
+			source: function (request, response) {
+				$.ajax({
+					url: "/Employee/GetEmployeesNames",
+					type: "POST",
+					dataType: "json",
+					data: { prefix: request.term },
+					success: function (data) {
+						response($.map(data, function (name) {
+							return { val: name, label: name };
+						}))
+
+					},
+					error: function (response) {
+						alert(response.responseText);
+					},
+					failure: function (response) {
+						alert(responseText);
+					}
+				})
+			},
+			select: function (e, i) {}
+		});
+	})
+</script>
+
+
+<h2>Adding employee</h2>
+
+@using (Html.BeginForm())
+{
+	<div class="col-3">
+
+		<div class="form-group mb-3">
+			@Html.LabelFor(m => m.Employee.Name, new { @class = "form-label" })
+			@Html.TextBoxFor(m => m.Employee.Name, new { @class = "form-control" })
+		</div>
+
+		<div class="form-group mb-3">
+			@Html.LabelFor(m => m.Employee.Surname, new { @class = "form-label" })
+			@Html.TextBoxFor(m => m.Employee.Surname, new { @class = "form-control" })
+		</div>
+
+		<div class="form-group mb-3">
+			@Html.LabelFor(m => m.Employee.Age, new { @class = "form-label" })
+			@Html.TextBoxFor(m => m.Employee.Age, "", new { type = "number", @class = "form-control" })
+		</div>
+
+		<div class="form-group mb-3">
+			@Html.LabelFor(m => m.Employee.Gender, new { @class = "form-label" })
+			@Html.DropDownListFor(m => m.Employee.Gender, Html.GetEnumSelectList(typeof(GenderEnum)), new { @class = "form-control" })
+		</div>
+
+		<div class="form-group mb-3">
+			@Html.LabelFor(m => m.Employee.DepartmentId, "Department", new { @class = "form-label" })
+			@Html.DropDownListFor(m => m.Employee.DepartmentId, ViewBag.Departments as IEnumerable<SelectListItem>, new { @class = "form-control" })
+		</div>
+		
+		<div>
+			@Html.LabelFor(m => m.Languages, "Programing languages", new { @class = "form-label" })
+			@Html.ListBoxFor(m => m.Languages, new MultiSelectList(ViewBag.Languages, "Id", "Name"), new { @class = "form-control" })
+		</div>
+
+		<div class="form-group mb-3">
+			<div class="text-danger">@Html.ValidationSummary()</div>
+		</div>
+
+		<div class="form-group">
+			<a href="@Url.Action("Index", "")" class="btn btn-secondary">Cancel</a>
+			<input type="submit" class="btn btn-primary" value="Add"/>
+		</div>
+	</div>
+}
+
+

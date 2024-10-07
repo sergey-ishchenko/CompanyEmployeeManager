@@ -1,0 +1,12 @@
+﻿@model CompanyEmployeeManager.Models.Auth.RegisterModel
+
+@{
+	ViewBag.Title = "Register";
+}
+
+<div class="col-3 container-fluid">
+
+	<h2>Register</h2>
+
+	@await Html.PartialAsync("_RegisterForm", Model)
+</div>

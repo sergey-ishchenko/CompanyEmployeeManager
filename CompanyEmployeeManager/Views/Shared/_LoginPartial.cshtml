@@ -1,0 +1,29 @@
+﻿<ul class="navbar-nav">
+	@if (User.Identity?.IsAuthenticated ?? false)
+	{
+		<li class="nav-item dropdown">
+			<span>Hello</span>
+			<a class="nav-link dropdown-toggle d-inline-block" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				@User.Identity?.Name!
+			</a>
+			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				@Html.ActionLink("Add user", "add", "User", null, new { @class = "dropdown-item" })
+				<div class="dropdown-divider"></div>
+
+				@using (Html.BeginForm("Logout", "Account", null, FormMethod.Post, null, new { @class = "form-inline" }))
+				{
+					<button type="submit" class="dropdown-item">Logout</button>
+				}
+			</div>
+		</li>
+	}
+	else
+	{
+		<li class="nav-item">
+			@Html.ActionLink("Register", "Register", "Account", null, new { @class = "nav-link text-dark" })
+		</li>
+		<li class="nav-item">
+			@Html.ActionLink("Login", "Login", "Account", null, new { @class = "nav-link text-dark" })
+		</li>
+	}
+</ul>

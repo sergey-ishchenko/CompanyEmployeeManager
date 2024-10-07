@@ -1,0 +1,13 @@
+﻿@model CompanyEmployeeManager.Models.Auth.RegisterModel
+
+@{
+	ViewData["Title"] = "Adding user";
+}
+
+<div class="col-3 container-fluid">
+
+	<h2>Add user</h2>
+	
+	@await Html.PartialAsync("_RegisterForm", Model)
+
+</div>

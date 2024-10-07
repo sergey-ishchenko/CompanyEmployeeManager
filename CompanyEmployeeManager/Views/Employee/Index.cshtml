@@ -1,0 +1,44 @@
+﻿@model EmployeeListModel
+@{
+	ViewData["Title"] = "Employees";
+}
+
+
+<h2>Employees list</h2>
+<p>
+	<a asp-action="Add">Add new</a>
+</p>
+@if (Model.Employees.Any())
+{
+	<table class="table">
+		<tr>
+			<th>Name</th>
+			<th>Surname</th>
+			<th>Age</th>
+			<th>Gander</th>
+			<th>Department</th>
+			<th></th>
+			<th></th>
+		</tr>
+		@foreach (var employee in Model.Employees)
+		{
+			<tr>
+				<td>@employee.Name</td>
+				<td>@employee.Surname</td>
+				<td>@employee.Age</td>
+				<td>@employee.Gender</td>
+				<td>@employee.Department.Name</td>
+				<td>
+					<a asp-action="Edit" asp-route-employeeid="@employee.Id">Edit</a>
+				</td>
+				<td>
+					<a asp-action="Delete" asp-route-employeeid="@employee.Id">Delete</a>
+				</td>
+			</tr>
+		}
+	</table>
+}
+else
+{
+	<p>Employee list is empty</p>
+}
